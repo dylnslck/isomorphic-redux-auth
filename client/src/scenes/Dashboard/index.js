@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react';
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { Button } from 'components';
 import mapDispatchToProps from './mapDispatchToProps';
@@ -44,6 +45,7 @@ class Dashboard extends Component {
 
     return (
       <div className="wrapper">
+        <Helmet title="Dashboard | Redux Auth" />
         <div className="container">
           <p>Welcome back {user.username}</p>
           <p>Server time: {isTimeLoading ? 'Loading...' : time}</p>
