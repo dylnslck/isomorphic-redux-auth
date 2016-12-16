@@ -15,15 +15,6 @@ const fakeDatabase = {
       // encrypted "password1" using bcrypt
       password: '$2a$10$g34Cxz6O1MOJkXWl1/BXM.CATmnmhHUXnBxjBeTeOga9tgR/RwKFS',
     },
-    2: {
-      id: '2',
-      name: 'Jane Doe',
-      username: 'janedoe',
-      email: 'janedoe@gmail.com',
-
-      // encrypted "password1" using bcrypt
-      password: '$2a$10$g34Cxz6O1MOJkXWl1/BXM.CATmnmhHUXnBxjBeTeOga9tgR/RwKFS',
-    },
   },
 };
 

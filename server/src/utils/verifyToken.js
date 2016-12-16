@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
-
-const secret = process.env.JWT_KEY;
+import secret from './jwtSecret';
 
 export default token => new Promise((resolve, reject) => {
   if (!token) {

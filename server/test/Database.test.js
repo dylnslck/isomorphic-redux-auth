@@ -24,11 +24,22 @@ test('should get the user with username "demo"', async (t) => {
   t.is(await db().getUserByUsername('invalid'), undefined); // demo was found
 });
 
-test('should correctly login', async (t) => {
+test('should successfully login', async (t) => {
   try {
     const { user, token } = await db().login('demo', 'password1');
     t.truthy(user);
     t.truthy(token);
+  } catch (err) {
+    t.fail(err.message);
+  }
+});
+
+test('should successfully verify a token', async (t) => {
+  try {
+    const token = 'eyJhbGciOiJIUzI1NiJ9.MQ.nMqFd6JpL7b687VlGDrzWT7a-Ju5TFNWeaTX3cPKw0g';
+    const { user, token: verifiedToken } = await db().verify(token);
+    t.is(user.id, '1');
+    t.is(token, verifiedToken);
   } catch (err) {
     t.fail(err.message);
   }

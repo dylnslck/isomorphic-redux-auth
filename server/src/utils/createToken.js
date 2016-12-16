@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
+import secret from './jwtSecret';
 
-const secret = 'i am a big secret';
 const ALGORITHM = 'HS256';
 
 /**

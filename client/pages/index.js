@@ -1,12 +1,15 @@
 import React, { PropTypes, Component } from 'react';
 import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
 import Head from 'next/head';
-import { reducer, initStore, emptyState } from '../state/store';
+import { reducer, initStore, emptyState, rootSaga } from '../state/store';
 import LoginForm from '../containers/LoginForm';
 
 export default class Index extends Component {
   static propTypes = {
     isServer: PropTypes.bool,
+    url: PropTypes.object, // eslint-disable-line
+    sagaMiddleware: PropTypes.object, // eslint-disable-line
     initialState: PropTypes.shape({
       auth: PropTypes.object,
     }),
@@ -14,17 +17,26 @@ export default class Index extends Component {
 
   static getInitialProps({ req }) {
     const isServer = Boolean(req);
-    const store = initStore(reducer, emptyState, isServer);
+    const sagaMiddleware = createSagaMiddleware();
+    const store = initStore(reducer, emptyState, sagaMiddleware, isServer);
 
+    console.log('running root saga get initial props');
+    sagaMiddleware.run(rootSaga);
     return { initialState: store.getState(), isServer };
   }
 
   constructor(props) {
     super(props);
-    this.store = initStore(reducer, props.initialState, props.isServer);
+    const sagaMiddleware = createSagaMiddleware();
+
+    console.log('running root saga constructor');
+    sagaMiddleware.run(rootSaga);
+    this.store = initStore(reducer, props.initialState, sagaMiddleware, props.isServer);
   }
 
   render() {
+    const { url } = this.props;
+
     return (
       <Provider store={this.store}>
         <div className="wrapper">
@@ -35,7 +47,7 @@ export default class Index extends Component {
             <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet" />
           </Head>
           <div className="container">
-            <LoginForm />
+            <LoginForm pushTo={url.pushTo} />
           </div>
 
           <style jsx>{`
