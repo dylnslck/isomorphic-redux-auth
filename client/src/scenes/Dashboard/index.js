@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'components';
 import mapDispatchToProps from './mapDispatchToProps';
 import mapStateToProps from './mapStateToProps';
 
@@ -16,6 +17,7 @@ class Dashboard extends Component {
     getServerTime: PropTypes.func,
     getServerVersion: PropTypes.func,
     getServerPath: PropTypes.func,
+    logout: PropTypes.func,
   }
 
   componentDidMount() {
@@ -37,6 +39,7 @@ class Dashboard extends Component {
       path,
       isPathLoading,
       user,
+      logout,
     } = this.props;
 
     return (
@@ -46,6 +49,7 @@ class Dashboard extends Component {
           <p>Server time: {isTimeLoading ? 'Loading...' : time}</p>
           <p>Server version: {isVersionLoading ? 'Loading...' : version}</p>
           <p>Server path: {isPathLoading ? 'Loading...' : path}</p>
+          <Button block onClick={logout}>Logout</Button>
         </div>
 
         <style jsx>{`

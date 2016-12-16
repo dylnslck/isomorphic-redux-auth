@@ -32,6 +32,10 @@ export const loginSuccess = () => ({
   type: constants.LOGIN_SUCCESS,
 });
 
+export const logout = () => ({
+  type: constants.LOGOUT,
+});
+
 export const verifySuccess = () => ({
   type: constants.VERIFY_SUCCESS,
 });

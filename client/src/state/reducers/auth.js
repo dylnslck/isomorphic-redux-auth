@@ -50,6 +50,10 @@ export default (state = init, action) => {
       return state.set('isAuthenticated', true);
     }
 
+    case constants.LOGOUT: {
+      return state.set('isAuthenticated', false);
+    }
+
     default:
       return state;
   }

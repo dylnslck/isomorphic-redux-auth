@@ -21,8 +21,8 @@ function* loginRequest(action) {
     const { user, token } = yield auth.login(username, password);
 
     localStorage.setItem('token', token);
-    localStorage.setItem('id', user.id);
 
+    yield put(actions.dataSuccess('user', { data: user }));
     yield put(actions.loginSuccess());
     browserHistory.push('/dashboard');
   } catch (err) {
@@ -34,12 +34,13 @@ export function* watchLoginRequest() {
   yield* takeEvery(constants.LOGIN_REQUEST, loginRequest);
 }
 
-function logoutRequest() {
+function logout() {
   localStorage.removeItem('token');
+  browserHistory.push('/');
 }
 
 export function* watchLogoutRequest() {
-  yield* takeEvery(constants.LOGOUT_REQUEST, logoutRequest);
+  yield* takeEvery(constants.LOGOUT, logout);
 }
 
 function* dataRequest(action) {
