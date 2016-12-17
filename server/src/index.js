@@ -9,7 +9,7 @@ const app = express();
 const port = 5000;
 
 app.use(bodyParser.json());
-app.use(cors()); // TODO: configure CORS properly
+app.use(cors()); // don't do this in a real app
 app.use(router);
 
 // "start" the database then bind the HTTP port
