@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { toJSON, handleError } from './utils';
 
 const authEndpoint = process.env.NODE_ENV === 'production'
-  ? 'https://TODO.com/auth'
+  ? 'https://server-zvggazfwuz.now.sh/auth'
   : 'http://localhost:5000/auth';
 
 export const login = (username, password) => {

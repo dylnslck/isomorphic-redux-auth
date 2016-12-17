@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch';
 import { toJSON, handleError } from './utils';
 
 const apiEndpoint = process.env.NODE_ENV === 'production'
-  ? 'https://TODO.com/api'
+  ? 'https://server-zvggazfwuz.now.sh/api'
   : 'http://localhost:5000/api';
 
 export const getData = (type) => {

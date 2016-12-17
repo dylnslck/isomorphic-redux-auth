@@ -1,6 +1,9 @@
 {
   "scripts": {
+    "build": "webpack && cp index.html dist/index.html && cp static/* dist/static",
+    "build:prod": "webpack --config webpack.prod.config.js && cp index.html dist/index.html && cp static/* dist/static",
     "dev": "node dev",
+    "deploy": "rimraf dist && mkdirp dist && yarn build:prod && cd dist && now",
     "test": "eslint src test && ava test"
   },
   "dependencies": {

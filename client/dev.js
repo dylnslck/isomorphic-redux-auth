@@ -13,7 +13,7 @@ app.use(devMiddleware(compiler, {
   historyApiFallback: true,
 }));
 
-app.use('/static', express.static(`${__dirname}/src/static`));
+app.use('/static', express.static(`${__dirname}/static`));
 app.use(hotMiddleware(compiler));
 
 app.get('*', (req, res) => {
