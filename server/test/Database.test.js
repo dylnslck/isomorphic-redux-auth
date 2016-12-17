@@ -11,7 +11,6 @@ test('should get all users', async (t) => {
   const users = await db().getAllUsers();
 
   t.truthy(users[0], 'first user was found');
-  t.truthy(users[1], 'second user was found');
 });
 
 test('should get a single user', async (t) => {

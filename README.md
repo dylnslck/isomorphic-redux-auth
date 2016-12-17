@@ -1,2 +1,2 @@
-# isomorphic-redux-auth
-Example isomorphic Redux auth app
+# Redux Auth Example
+Example Redux auth app
