@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "node dev"
+    "dev": "node dev",
+    "test": "eslint src test && ava test"
   },
   "dependencies": {
     "babel-polyfill": "^6.20.0",
@@ -19,6 +20,7 @@
     "styled-jsx": "^0.1.0"
   },
   "devDependencies": {
+    "ava": "^0.17.0",
     "babel-core": "^6.20.0",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.9",
@@ -32,10 +34,24 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
     "mkdirp": "^0.5.1",
+    "nock": "^9.0.2",
     "react-hot-loader": "next",
     "rimraf": "^2.5.4",
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2"
+  },
+  "ava": {
+    "files": [
+      "test"
+    ],
+    "source": [
+      "src/**/*.{js}",
+      "!dist/**/*"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "babel": "inherit"
   }
 }
